@@ -30,30 +30,10 @@ $(document).ready(function () {
   });
 
   function nextLyric() {
-      if (currentPage < totalPages) {
-          currentPage++;
-          updateActivePage();
-          
-          // Kiểm tra nếu vừa chuyển đến trang cuối (27)
-          if (currentPage === totalPages) {
-              // Đợi 4 giây để Ngọc đọc xong rồi tự đóng thư
-              setTimeout(function () {
-                  envelope.removeClass("open").addClass("close");
-                  isOpen = false;
-                  
-                  // Reset về trang 1 sau khi nắp thư đã đóng lại
-                  setTimeout(function () {
-                      currentPage = 1;
-                      updateActivePage();
-                      resetBtn.hide();
-                      openBtn.show();
-                  }, 600);
-              }, 4000); // 4000ms là thời gian chờ ở câu cuối
-          }
-      } else {
-          currentPage = 1;
-          updateActivePage();
-      }
+      currentPage = currentPage < totalPages ? currentPage + 1 : 1;
+      updateActivePage();
+  }
+
 
   function updateActivePage() {
       $(".lyric-page").removeClass("active");
@@ -135,4 +115,5 @@ function createSnowflake() {
 // Tạo bông tuyết liên tục
 
 setInterval(createSnowflake, 150);
+
 
