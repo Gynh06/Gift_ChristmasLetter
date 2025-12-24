@@ -4,7 +4,7 @@ $(document).ready(function () {
   const resetBtn = $("#resetBtn");
 
   let currentPage = 1;
-  const totalPages = 23;
+  const totalPages = 27;
   let isOpen = false;
 
   envelope.on('click', function () {
@@ -112,4 +112,5 @@ function createSnowflake() {
 }
 
 // Tạo bông tuyết liên tục
+
 setInterval(createSnowflake, 150);
